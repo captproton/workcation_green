@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_23_205505) do
+ActiveRecord::Schema.define(version: 2019_06_23_233817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "amenities", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "announcements", force: :cascade do |t|
     t.datetime "published_at"
@@ -35,6 +41,29 @@ ActiveRecord::Schema.define(version: 2019_06_23_205505) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "listings", force: :cascade do |t|
+    t.bigint "location_id", null: false
+    t.integer "beds"
+    t.integer "baths"
+    t.string "title"
+    t.boolean "plus"
+    t.integer "star_rating"
+    t.integer "price"
+    t.string "rental_period"
+    t.text "image_url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["location_id"], name: "index_listings_on_location_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.string "lat"
+    t.string "lng"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "notifications", force: :cascade do |t|
     t.bigint "recipient_id"
     t.bigint "actor_id"
@@ -42,6 +71,12 @@ ActiveRecord::Schema.define(version: 2019_06_23_205505) do
     t.string "action"
     t.bigint "notifiable_id"
     t.string "notifiable_type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "property_kinds", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -76,5 +111,6 @@ ActiveRecord::Schema.define(version: 2019_06_23_205505) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "listings", "locations"
   add_foreign_key "services", "users"
 end
