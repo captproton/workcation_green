@@ -63,9 +63,10 @@ gem 'friendly_id', '~> 5.2', '>= 5.2.5'
 gem 'gravatar_image_tag', github: 'mdeering/gravatar_image_tag'
 gem 'mini_magick', '~> 4.9', '>= 4.9.2'
 gem 'name_of_person', '~> 1.1'
-gem 'omniauth-facebook', '~> 5.0'
-gem 'omniauth-github', '~> 1.3'
-gem 'omniauth-twitter', '~> 1.4'
+# current confusion about the security of onmiauth https://github.com/omniauth/omniauth/pull/809
+# gem 'omniauth-facebook', '~> 5.0'
+# gem 'omniauth-github', '~> 1.3'
+# gem 'omniauth-twitter', '~> 1.4'
 gem 'sidekiq', '~> 5.2', '>= 5.2.5'
 gem 'sitemap_generator', '~> 6.0', '>= 6.0.1'
 gem 'whenever', require: false
