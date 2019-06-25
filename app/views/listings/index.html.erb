@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<%= render partial: 'header'%>
+<div class="xl:flex-1 xl:flex xl:overflow-y-hidden">
+  <%= render partial: 'search_filters'%>
+  <main class="py-6 xl:flex-1 xl:overflow-x-hidden">
+
+    <!--  -->
+    <%#= render partial: 'location', collection: @listings %>
+        <!-- @listings = Listing.all.group_by {|listing| listing.location_id} -->
+
+    <% @listings.group_by(&:location).each do |location, listings| %>
+    	<%= render partial: 'location', locals: {listings: listings, location: location}%>
+
+	<% end %>
+  </main>
+</div>
+<!-- built files will be auto injected -->
+<script type="text/javascript" src="/app.js"></script>
