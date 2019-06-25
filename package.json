@@ -12,6 +12,8 @@
     "jquery": "^3.4.1",
     "local-time": "^2.1.0",
     "popper.js": "^1.15.0",
+    "postcss-preset-env": "^6.6.0",
+    "tailwindcss": "^1.0.4",
     "turbolinks": "^5.2.0",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
